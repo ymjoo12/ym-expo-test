@@ -8,6 +8,7 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
 import firebase from 'firebase';
+import * as Analytics from 'expo-firebase-analytics';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAJeWco-ULuYeO6zhAgxirhGQphpK-6CJI",
@@ -20,7 +21,8 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+// firebase.analytics();
+Analytics.setAnalyticsCollectionEnabled(true).then();
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

@@ -1,15 +1,24 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+
+import * as Analytics from 'expo-firebase-analytics';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      {/* <EditScreenInfo path="/screens/TabOneScreen.tsx" /> */}
+      <TouchableOpacity
+        onPress={() => {
+          Analytics.logEvent("TabOneClick",{ tabOneParameter: 12344321 });
+        }}
+      >
+        <Text>{"EVENT LOG"}</Text>
+      </TouchableOpacity>
     </View>
   );
 }
